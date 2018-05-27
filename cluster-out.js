@@ -10,16 +10,15 @@ module.exports = (RED) => {
       //TODO:
       let clusterConfig = RED.nodes.getNode(n.cluster);
       clusterConfig = {
-        addresses: [0x20],
-        initial_states: [true],
-        name: 'blah'
+        addresses: [0x20, 0x26],
+        initial_states: [true, true]
       };
 
-      if (!instances[clusterConfig.name]) {
-        instances[clusterConfig.name] = Cluster(clusterConfig);
+      if (!instances[n.cluster]) {
+        instances[n.cluster] = Cluster(clusterConfig);
       }
 
-      const cluster = instances[clusterConfig.name];
+      const cluster = instances[n.cluster];
 
       cluster.outputPin(n.pin, n.inverted, n.initialValue)
       .then(() => {
