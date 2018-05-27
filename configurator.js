@@ -5,7 +5,7 @@ module.exports = (RED) => {
   function ClusterConfiguratorNode(config) {
     RED.nodes.createNode(this, config);
 
-    this.warn(config);
+    /*this.warn(config);
 
     this.addresses = JSON.parse(config.addresses);
     this.initialStates = JSON.parse(config.initialStates);
@@ -14,7 +14,10 @@ module.exports = (RED) => {
       this.interrupts = JSON.parse(config.interrupts);
     }
 
-    this.warn(config.addresses);
+    this.warn(config.addresses);*/
+
+    config.addresses = [0x20, 0x22];
+    config.initial_states = [true, true];
 
     let cluster =
       new PCF8574Cluster(i2cBus, config.addresses, config.initial_states);
