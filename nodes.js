@@ -21,16 +21,19 @@ module.exports = (RED) => {
 
     });
 
-    cluster.on('input', (msg) => {
+    function onClusterInput(msg) {
       let _msg = {
         payload: msg
       };
 
       node.send(_msg);
-    });
+    }
+
+    cluster.on('input', onClusterInput);
 
     node.on('close', () => {
       //cluster.removeAllListeners();
+      cluster.removeListener('input', onClusterInput);
       node.warn('listeners count on close ' + cluster.listenerCount('input'));
     });
   }
