@@ -1,4 +1,4 @@
-module.exports = (config) {
+module.exports = (config) => {
   const PCF8574Cluster = require('pcf8574cluster');
   const i2cBus = require('i2c-bus').openSync(1);
 
