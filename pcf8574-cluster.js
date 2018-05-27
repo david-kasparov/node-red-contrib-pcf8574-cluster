@@ -81,6 +81,24 @@ module.exports = function(RED) {
       node.warn('set pin');
       node.warn(cluster);
 
+      cluster.outputPin(1, true, false)
+      .then(() => {
+        return cluster.outputPin(2, true, false);
+      })
+      .then(() => {
+        return cluster.setAllPins(true);
+      })
+      .then(() => {
+        return cluster.getPinValue(1);
+      })
+      .delay(2000)
+      .then(() => {
+        return cluster.setAllPins(false);
+      })
+      .then(() => {
+        return cluster.getPinValue(1);
+      });
+
       node.send(msg);
     });
   }
