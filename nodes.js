@@ -18,18 +18,20 @@ module.exports = (RED) => {
 
     cluster.inputPin(n.pin, n.inverted)
     .then(() => {
-      cluster.on('input', (msg) => {
-        let _msg = {
-          payload: msg
-        };
 
-        node.send(_msg);
-      });
+    });
 
-      node.on('close', () => {
-        //cluster.removeAllListeners();
-        node.warn('listeners count before close ' + cluster.listenerCount('input'));
-      });
+    cluster.on('input', (msg) => {
+      let _msg = {
+        payload: msg
+      };
+
+      node.send(_msg);
+    });
+
+    node.on('close', () => {
+      //cluster.removeAllListeners();
+      node.warn('listeners count on close ' + cluster.listenerCount('input'));
     });
   }
 
@@ -51,16 +53,18 @@ module.exports = (RED) => {
 
     cluster.outputPin(n.pin, n.inverted, n.initialValue)
     .then(() => {
-      node.on('input', (msg) => {
-        cluster.setPin(n.pin, msg.payload.value)
-        .then(() => {
 
-        });
-      });
+    });
 
-      node.on('close', () => {
+    node.on('input', (msg) => {
+      cluster.setPin(n.pin, msg.payload.value)
+      .then(() => {
 
       });
+    });
+
+    node.on('close', () => {
+
     });
   }
 
