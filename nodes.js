@@ -27,6 +27,7 @@ module.exports = (RED) => {
       });
 
       node.on('close', () => {
+        node.warn('in node close');
         //cluster.removeAllListeners();
         //cluster.disableAllInterrupts();
       });
@@ -49,8 +50,6 @@ module.exports = (RED) => {
 
     const cluster = instances[n.cluster];
 
-    node.warn('out node created')
-
     cluster.outputPin(n.pin, n.inverted, n.initialValue)
     .then(() => {
       node.on('input', (msg) => {
@@ -61,6 +60,7 @@ module.exports = (RED) => {
       });
 
       node.on('close', () => {
+        node.warn('out node close');
         //cluster.removeAllListeners();
         //cluster.disableAllInterrupts();
       });
@@ -92,6 +92,7 @@ module.exports = (RED) => {
     });
 
     node.on('close', () => {
+      node.warn('pin value node close');
       //cluster.removeAllListeners();
       //cluster.disableAllInterrupts();
     });
