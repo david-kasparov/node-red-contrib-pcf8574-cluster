@@ -19,6 +19,7 @@ module.exports = (RED) => {
       cluster.inputPin(n.pin, n.inverted)
       .then(() => {
         cluster.on('input', (msg) => {
+          msg.payload = msg;
           node.send(msg);
         });
 
