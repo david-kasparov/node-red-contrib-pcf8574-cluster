@@ -19,14 +19,13 @@ module.exports = (RED) => {
       cluster.inputPin(n.pin, n.inverted)
       .then(() => {
         cluster.on('input', (msg) => {
-          let pinValue = cluster.getPinValue(1);
-
-          msg.payload.pin_value = pinValue;
-
-
           let _msg = {
             payload: msg
           };
+
+          let pinValue = cluster.getPinValue(1);
+
+          _msg.payload.pin_value = pinValue;
 
           node.send(_msg);
         });
