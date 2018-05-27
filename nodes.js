@@ -11,7 +11,6 @@ module.exports = (RED) => {
     let clusterConfig = RED.nodes.getNode(n.cluster);
 
     if (!instances[n.cluster]) {
-      node.warn('in cluster instance created');
       instances[n.cluster] = Cluster(clusterConfig);
     }
 
@@ -28,7 +27,7 @@ module.exports = (RED) => {
       });
 
       node.on('close', () => {
-        cluster.removeAllListeners();
+        //cluster.removeAllListeners();
       });
     });
   }
@@ -44,7 +43,6 @@ module.exports = (RED) => {
     let clusterConfig = RED.nodes.getNode(n.cluster);
 
     if (!instances[n.cluster]) {
-      node.warn('out cluster instance created');
       instances[n.cluster] = Cluster(clusterConfig);
     }
 
@@ -76,7 +74,6 @@ module.exports = (RED) => {
     let clusterConfig = RED.nodes.getNode(n.cluster);
 
     if (!instances[n.cluster]) {
-      node.warn('pin cluster instance created');
       instances[n.cluster] = Cluster(clusterConfig);
     }
 
