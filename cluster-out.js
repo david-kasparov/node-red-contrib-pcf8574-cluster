@@ -26,8 +26,8 @@ module.exports = (RED) => {
         });
 
         node.on('close', () => {
-          cluster.removeAllListeners();
-          cluster.disableAllInterrupts();
+          //cluster.removeAllListeners();
+          //cluster.disableAllInterrupts();
         });
       });
   }

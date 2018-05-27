@@ -16,8 +16,6 @@ module.exports = (RED) => {
 
       const cluster = instances[n.cluster];
 
-      this.warn(cluster.getPinValue(n.pin));
-
       node.on('input', (msg) => {
         msg.payload.pin_value = cluster.getPinValue(n.pin);
 
@@ -25,8 +23,8 @@ module.exports = (RED) => {
       });
 
       node.on('close', () => {
-        cluster.removeAllListeners();
-        cluster.disableAllInterrupts();
+        //cluster.removeAllListeners();
+        //cluster.disableAllInterrupts();
       });
   }
 
