@@ -7,11 +7,16 @@ module.exports = (RED) => {
 
     this.warn(config);
 
-    this.addresses = config.addresses;
-    this.initialStates = config.initialStates;
-    this.interrupts = config.interrupts;
+    this.addresses = JSON.parse(config.addresses);
+    this.initialStates = JSON.parse(config.initialStates);
 
-    const cluster =
+    if (config.interrupts) {
+      this.interrupts = JSON.parse(config.interrupts);
+    }
+
+    this.warn(config.addresses);
+
+    let cluster =
       new PCF8574Cluster(i2cBus, config.addresses, config.initial_states);
 
     if (this.interrupts && this.interrupts.length) {
