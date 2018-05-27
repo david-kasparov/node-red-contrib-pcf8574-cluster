@@ -31,6 +31,11 @@ module.exports = (RED) => {
 
           });
         });
+
+        this.on('close', () => {
+          cluster.removeAllListeners();
+          cluster.disableAllInterrupts();
+        });
       });
   }
 
