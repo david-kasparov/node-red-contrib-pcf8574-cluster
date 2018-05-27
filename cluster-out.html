@@ -5,7 +5,7 @@
         defaults: {
             cluster: {value:"", type:"cluster-configurator"},
             pin: {value: "", required: true},
-            inverted: {value: "", required: true, type: "bool"},
+            inverted: {value: "bool", required: true, type: "bool", options:["true","false"]},
             initialValue: { value: "", required: true, type: "bool" }
         },
         inputs: 1,
