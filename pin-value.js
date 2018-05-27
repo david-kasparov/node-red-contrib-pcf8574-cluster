@@ -17,9 +17,12 @@ module.exports = (RED) => {
       const cluster = instances[n.cluster];
 
       node.on('input', (msg) => {
-        msg.payload.pin_value = cluster.getPinValue(n.pin);
+        cluster.doPoll()
+        .then(() => {
+          msg.payload.pin_value = cluster.getPinValue(n.pin);
 
-        node.send(msg);
+          node.send(msg);
+        });
       });
 
       node.on('close', () => {
