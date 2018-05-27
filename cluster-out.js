@@ -1,10 +1,10 @@
 module.exports = (RED) => {
-  function ClusterOutNode(config) {
-      RED.nodes.createNode(this, config);
 
-      let clusterConfig = RED.nodes.getNode(config.cluster);
+  function ClusterOutNode(n) {
+      RED.nodes.createNode(this, n);
 
-      ///tmp
+      //TODO:
+      let clusterConfig = RED.nodes.getNode(n.cluster);
       clusterConfig = {
         addresses: [0x20],
         initial_states: [true]
@@ -12,13 +12,21 @@ module.exports = (RED) => {
 
       const cluster = require("./cluster")(clusterConfig);
 
-      cluster.outputPin(1, true, false)
+      cluster.outputPin(n.pin, n.inverted, n.initialValue)
       .then(() => {
-        cluster.setPin(1, true);
-      });
+        this.on('input', (msg) => {
+          cluster.setPin(msg.payload.pin, msg.payload.value)
+          .then(() => {
 
-      this.on('input', (msg) => {
-        this.send(msg);
+          });
+        });
+
+        cluster.on('input', (msg) => {
+          cluster.setPin(msg.payload.pin, msg.payload.value)
+          .then(() => {
+
+          });
+        });
       });
   }
 
