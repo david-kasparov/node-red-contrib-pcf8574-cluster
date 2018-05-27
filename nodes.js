@@ -18,7 +18,7 @@ module.exports = (RED) => {
 
     cluster.inputPin(n.pin, n.inverted)
     .then(() => {
-      cluster.on('input', (msg) => {
+      /*cluster.on('input', (msg) => {
         let _msg = {
           payload: msg
         };
@@ -26,8 +26,22 @@ module.exports = (RED) => {
         node.send(_msg);
       });
 
-      node.on('close', () => {
+      node.on('close', (removed, done) => {
         //cluster.removeAllListeners();
+      });*/
+
+      const callback = (msg) => {
+        let _msg = {
+          payload: msg
+        };
+
+        node.send(_msg);
+      };
+
+      cluster.on('input', callback);
+
+      node.on('close', (removed, done) => {
+        cluster.removeListener('input', callback);
       });
     });
   }
