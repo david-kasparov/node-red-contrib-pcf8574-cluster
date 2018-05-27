@@ -54,13 +54,7 @@ module.exports = (RED) => {
       node.on('input', (msg) => {
         cluster.setPin(n.pin, msg.payload.value)
         .then(() => {
-          let pinValue = cluster.getPinValue(n.pin);
 
-          if (pinValue) {
-            node.status({fill:"green",shape:"dot",text:"on"});
-          } else {
-            node.status({fill:"red",shape:"dot",text:"off"});
-          }
         });
       });
 
