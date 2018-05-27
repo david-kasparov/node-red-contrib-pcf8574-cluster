@@ -18,6 +18,8 @@ module.exports = function(RED) {
 
     var node = this;
 
+    node.log(config);
+
     node.cluster = new PCF8574Cluster(i2cBus, config.params.addresses, config.params.initial_states);
 
     let outputPins = [];
@@ -29,6 +31,8 @@ module.exports = function(RED) {
     Promise.all(outputPins)
     .then(() => {
       cluster = node.cluster;
+
+      node.log(cluster, 'cluster');
     });
 
     node.cluster.on('input', function(msg) {
@@ -53,6 +57,10 @@ module.exports = function(RED) {
       var pin = msg.pin || 1;
       var value = msg.value || false;
       cluster.setPin(pin, value);
+
+      node.log(cluster, 'set pin');
+
+      node.send(msg);
     });
   }
 
