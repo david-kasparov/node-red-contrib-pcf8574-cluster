@@ -12,7 +12,8 @@
     "nodes": {
       "configurator": "configurator.js",
       "cluster out": "cluster-out.js",
-      "cluster in": "cluster-in.js"
+      "cluster in": "cluster-in.js",
+      "pin value": "pin-value.js"
     }
   },
   "dependencies": {

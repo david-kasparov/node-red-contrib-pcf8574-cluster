@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    RED.nodes.registerType('pin-value', {
+        category: 'pcf8574 cluster',
+        color: '#80b779',
+        defaults: {
+            cluster: {value:"", type:"cluster-configurator"},
+            name: {value: "", required: false},
+            pin: {value: "", required: true, validate: RED.validators.number()}
+        },
+        inputs: 1,
+        outputs: 1,
+        paletteLabel: "pin value",
+        icon: "rpi.png",
+        align: "left",
+        label: function () {
+            return this.name || "pin value";
+        },
+        oneditprepare: function() {
+
+        },
+        oneditsave: function() {
+
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="pin-value">
+    <div class="form-row">
+        <label for="node-input-cluster"><i class="icon-tag"></i> Cluster</label>
+        <input type="text" id="node-input-cluster" placeholder="Cluster">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pin"><i class="icon-tag"></i> Pin</label>
+        <input type="text" id="node-input-pin" placeholder="Pin">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="pin-value">
+    <p>Pin current value</p>
+</script>
