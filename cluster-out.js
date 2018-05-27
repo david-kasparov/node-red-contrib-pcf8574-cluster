@@ -18,17 +18,19 @@ module.exports = (RED) => {
 
       cluster.outputPin(n.pin, n.inverted, n.initialValue)
       .then(() => {
-        node.on('input', (msg) => {
-          cluster.setPin(n.pin, msg.payload.value)
-          .then(() => {
 
-          });
-        });
+      });
 
-        node.on('close', () => {
-          //cluster.removeAllListeners();
-          //cluster.disableAllInterrupts();
+      node.on('input', (msg) => {
+        cluster.setPin(n.pin, msg.payload.value)
+        .then(() => {
+
         });
+      });
+
+      node.on('close', () => {
+        //cluster.removeAllListeners();
+        //cluster.disableAllInterrupts();
       });
   }
 

@@ -18,22 +18,20 @@ module.exports = (RED) => {
 
       cluster.inputPin(n.pin, n.inverted)
       .then(() => {
-        cluster.on('input', (msg) => {
-          let _msg = {
-            payload: msg
-          };
 
-          let pinValue = cluster.getPinValue(1);
+      });
 
-          _msg.payload.pin_value = pinValue;
+      cluster.on('input', (msg) => {
+        let _msg = {
+          payload: msg
+        };
 
-          node.send(_msg);
-        });
+        node.send(_msg);
+      });
 
-        node.on('close', () => {
-          //cluster.removeAllListeners();
-          //cluster.disableAllInterrupts();
-        });
+      node.on('close', () => {
+        //cluster.removeAllListeners();
+        //cluster.disableAllInterrupts();
       });
   }
 
