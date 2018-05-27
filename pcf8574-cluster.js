@@ -22,24 +22,6 @@ module.exports = function(RED) {
 
     node.cluster = new PCF8574Cluster(i2cBus, config.params.addresses, config.params.initial_states);
 
-    node.cluster.outputPin(1, true, false)
-    .then(() => {
-      return node.cluster.outputPin(2, true, false);
-    })
-    .then(() => {
-      return node.cluster.setAllPins(true);
-    })
-    .then(() => {
-      return node.cluster.getPinValue(1);
-    })
-    .delay(2000)
-    .then(() => {
-      return node.cluster.setAllPins(false);
-    })
-    .then(() => {
-      return node.cluster.getPinValue(1);
-    });
-
     let outputPins = [];
 
     config.params.output_pins.forEach(outputPin => {
@@ -76,29 +58,13 @@ module.exports = function(RED) {
       var pin = msg.pin || 1;
       var value = msg.value || false;
 
-      cluster.setPin(pin, value);
+      cluster.setPin(pin, value)
+      .then(() => {
+        node.warn('set pin');
+        node.warn(cluster);
 
-      node.warn('set pin');
-      node.warn(cluster);
-
-      /*cluster.outputPin(1, true, false)
-      .then(() => {
-        return cluster.outputPin(2, true, false);
-      })
-      .then(() => {*/
-      cluster.setAllPins(true)
-      .then(() => {
-        return cluster.getPinValue(1);
-      })
-      .delay(2000)
-      .then(() => {
-        return cluster.setAllPins(false);
-      })
-      .then(() => {
-        return cluster.getPinValue(1);
+        node.send(msg);
       });
-
-      node.send(msg);
     });
   }
 
