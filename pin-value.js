@@ -17,14 +17,14 @@ module.exports = (RED) => {
       const cluster = instances[n.cluster];
 
       node.on('input', (msg) => {
-        cluster.doPoll()
-        .then(() => {
+        //cluster.doPoll()
+        //.then(() => {
           let pinValue = cluster.getPinValue(n.pin);
 
           msg.payload.pin_value = pinValue;
 
           node.send(msg);
-        });
+        //});
       });
 
       node.on('close', () => {
