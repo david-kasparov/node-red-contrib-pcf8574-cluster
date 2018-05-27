@@ -19,7 +19,7 @@ module.exports = (RED) => {
       cluster.outputPin(n.pin, n.inverted, n.initialValue)
       .then(() => {
         node.on('input', (msg) => {
-          cluster.setPin(/*msg.payload.pin*/n.pin, msg.payload.value)
+          cluster.setPin(n.pin, msg.payload.value)
           .then(() => {
 
           });
