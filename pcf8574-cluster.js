@@ -1,9 +1,8 @@
-'use strict';
+module.exports = function(RED) {
+  "use strict";
+  const PCF8574Cluster = require('pcf8574cluster');
+  const i2cBus = require('i2c-bus').openSync(1);
 
-const PCF8574Cluster = require('pcf8574cluster');
-const i2cBus = require('i2c-bus').openSync(1);
-
-function init(RED) {
   let cluster;
 
   function ClusterNode(config) {
@@ -49,5 +48,3 @@ function init(RED) {
 
   RED.nodes.registerType("set-pin", SetPinNode);
 }
-
-module.exports = init;
