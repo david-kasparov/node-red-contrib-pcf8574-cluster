@@ -24,3 +24,30 @@
 <script type="text/x-red" data-help-name="cluster">
     <p>A simple node that converts the message payloads into all lower-case characters</p>
 </script>
+
+
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('set-pin',{
+        category: 'pcf8574',
+        color: '#a6bbcf',
+        defaults: {
+
+        },
+        inputs:1,
+        outputs:0,
+        icon: "file.png",
+        label: function() {
+            return this.name||"set-pin";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="set-pin">
+
+</script>
+
+<script type="text/x-red" data-help-name="set-pin">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>
