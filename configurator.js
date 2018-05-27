@@ -13,9 +13,6 @@ module.exports = (RED) => {
     }
 
     this.warn(config.addresses);*/
-
-    //config.addresses = [0x20];
-    //config.initial_states = [true];
   }
 
   RED.nodes.registerType("cluster-configurator", ClusterConfiguratorNode);

@@ -7,6 +7,8 @@ module.exports = (RED) => {
   function ClusterOutNode(n) {
       RED.nodes.createNode(this, n);
 
+      let node = this;
+
       //TODO:
       let clusterConfig = RED.nodes.getNode(n.cluster);
       clusterConfig = {
@@ -19,10 +21,11 @@ module.exports = (RED) => {
       }
 
       const cluster = instances[n.cluster];
-
+this.warn(n.pin, n.inverted, n.initialValue)
       cluster.outputPin(n.pin, n.inverted, n.initialValue)
       .then(() => {
         this.on('input', (msg) => {
+          node.warn(msg);
           cluster.setPin(msg.payload.pin, msg.payload.value)
           .then(() => {
 
@@ -30,6 +33,7 @@ module.exports = (RED) => {
         });
 
         cluster.on('input', (msg) => {
+          node.warn(msg);
           cluster.setPin(msg.payload.pin, msg.payload.value)
           .then(() => {
 
