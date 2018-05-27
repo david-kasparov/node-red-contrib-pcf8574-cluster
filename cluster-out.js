@@ -9,7 +9,7 @@ module.exports = (RED) => {
 
       let node = this;
       let clusterConfig = RED.nodes.getNode(n.cluster);
-
+this.warn(clusterConfig)
       if (!instances[n.cluster]) {
         instances[n.cluster] = Cluster(clusterConfig);
       }
