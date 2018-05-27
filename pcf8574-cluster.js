@@ -63,7 +63,7 @@ module.exports = function(RED) {
         return cluster.outputPin(2, true, false);
       })
       .then(() => {
-        cluster.setPin(pin, value)
+        cluster.setPin(1, true)
         .then(() => {
           node.warn('set pin');
           node.warn(cluster);
