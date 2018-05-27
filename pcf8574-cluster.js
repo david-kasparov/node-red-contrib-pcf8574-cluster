@@ -1,16 +1,24 @@
 module.exports = function(RED) {
   "use strict";
   const PCF8574Cluster = require('pcf8574cluster');
-  const i2cBus = require('i2c-bus').openSync(1);
+  const i2cBus = require('i2c-bus');
 
   let cluster;
 
   function ClusterNode(config) {
     RED.nodes.createNode(this, config);
 
+    config = {
+      params: {
+        addresses: [0x20],
+        initial_states: [true],
+        output_pins: [1,2]
+      }
+    };
+
     var node = this;
 
-    node.cluster = new PCF8574Cluster(i2cBus, config.params.addresses, config.params.initial_states);
+    node.cluster = new PCF8574Cluster(i2cBus.openSync(1), config.params.addresses, config.params.initial_states);
 
     let outputPins = [];
 
