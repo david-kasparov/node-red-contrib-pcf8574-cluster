@@ -55,15 +55,15 @@ module.exports = function(RED) {
     var node = this;
 
     node.on('input', function(msg) {
-      var pin = msg.pin || 1;
-      var value = msg.value || false;
+      var pin = msg.payload.pin;
+      var value = msg.payload.value;
 
-      node.warn('set pin');
+      /*node.warn('set pin');
       node.warn(msg);
       node.warn(msg.pin);
-      node.warn(msg.value);
+      node.warn(msg.value);*/
 
-      cluster.setPin(1, true)
+      cluster.setPin(pin, value)
       .then(() => {
 
         node.send(msg);
