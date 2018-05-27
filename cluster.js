@@ -5,8 +5,8 @@ module.exports = (config) => {
   let cluster =
       new PCF8574Cluster(i2cBus, config.addresses, config.initial_states);
 
-  if (this.interrupts && this.interrupts.length) {
-    this.interrupts.forEach(interrupt => {
+  if (config.interrupts && config.interrupts.length) {
+    config.interrupts.forEach(interrupt => {
       console.log(interrupt)
       cluster.enableInterrupt(interrupt.index, interrupt.pin);
     });
