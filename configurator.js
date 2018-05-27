@@ -6,11 +6,6 @@ module.exports = (RED) => {
 
 
     this.addresses = JSON.parse(config.addresses).addresses;
-
-    this.addresses.forEach((address, i) => {
-      this.addresses[i] = address.toString(16);
-    });
-
     this.initialStates = JSON.parse(config.initialStates).initial_states;
     this.interrupts = JSON.parse(config.interrupts).interrupts;
 
