@@ -16,17 +16,17 @@ module.exports = (RED) => {
 
     this.warn(config.addresses);*/
 
-    config.addresses = [0x20, 0x22];
-    config.initial_states = [true, true];
+    config.addresses = [0x20];
+    config.initial_states = [true];
 
     let cluster =
       new PCF8574Cluster(i2cBus, config.addresses, config.initial_states);
 
-    if (this.interrupts && this.interrupts.length) {
+    /*if (this.interrupts && this.interrupts.length) {
       this.interrupts.forEach(interrupt => {
         cluster.enableInterrupt(interrupt.index, interrupt.pin);
       });
-    }
+    }*/
 
     this.cluster = cluster;
   }
