@@ -1,3 +1,7 @@
+const Cluster = require("./cluster");
+
+const instances = {};
+
 module.exports = (RED) => {
 
   function ClusterOutNode(n) {
@@ -7,10 +11,15 @@ module.exports = (RED) => {
       let clusterConfig = RED.nodes.getNode(n.cluster);
       clusterConfig = {
         addresses: [0x20],
-        initial_states: [true]
+        initial_states: [true],
+        name: 'blah'
       };
 
-      const cluster = require("./cluster")(clusterConfig);
+      if (!instances[clusterConfig.name]) {
+        instances[clusterConfig.name] = Cluster(clusterConfig);
+      }
+
+      const cluster = instances[clusterConfig.name];
 
       cluster.outputPin(n.pin, n.inverted, n.initialValue)
       .then(() => {
