@@ -10,6 +10,7 @@
   "license": "ISC",
   "node-red" : {
     "nodes": {
+      "configurator": "configurator.js",
       "pcf8574-cluster": "pcf8574-cluster.js"
     }
   },

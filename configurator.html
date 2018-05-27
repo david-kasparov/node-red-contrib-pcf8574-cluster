@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    RED.nodes.registerType('cluster-configurator', {
+        category: 'config',
+        defaults: {
+            addresses: {value: "", required: true},
+            initialStates: {value: "", required: true},
+            interrupts: {value: ""}
+        },
+        label: function () {
+            return this.name || "cluster-configurator";
+        },
+        oneditprepare: function() {
+
+        },
+        oneditsave: function() {
+
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="cluster-configurator">
+    <div class="form-row">
+        <label for="node-config-input-addresses"><i class="icon-tag"></i> Addresses</label>
+        <input type="text" id="node-config-input-addresses" placeholder="Addresses">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-initialStates"><i class="icon-tag"></i> Initial states</label>
+        <input type="text" id="node-config-input-initialStates" placeholder="Initial states">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-interrupts"><i class="icon-tag"></i> Interrupts</label>
+        <input type="text" id="node-config-input-interrupts" placeholder="Interrupts">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="cluster-configurator">
+    <p>Configuration for cluster nodes.</p>
+</script>

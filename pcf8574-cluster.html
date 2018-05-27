@@ -1,53 +1,48 @@
 <script type="text/javascript">
-    RED.nodes.registerType('cluster',{
-        category: 'pcf8574',
-        color: '#a6bbcf',
+    RED.nodes.registerType('cluster-out', {
+        category: 'pcf8574-cluster',
+        color: '#3FADB5',
         defaults: {
-            params: {value:""}
+            cluster: {value:"", type:"cluster-configurator"},
+            pin: {value: "", required: true},
+            inverted: {value: "", required: true},
+            initialValue: { value: "", required: true }
         },
-        inputs:1,
-        outputs:1,
-        icon: "file.png",
-        label: function() {
-            return this.name||"cluster";
+        inputs: 1,
+        outputs: 1,
+        paletteLabel: "out",
+        icon: "thermometer-icon.png",
+        label: function () {
+            return this.name || "cluster-out";
+        },
+        oneditprepare: function() {
+
+        },
+        oneditsave: function() {
+
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="cluster">
+<script type="text/x-red" data-template-name="cluster-out">
     <div class="form-row">
-        <label for="node-input-params"><i class="icon-tag"></i> Params</label>
-        <input type="text" id="node-input-params" placeholder="Params">
+        <label for="node-input-cluster"><i class="icon-tag"></i> Cluster</label>
+        <input type="text" id="node-input-cluster" placeholder="Cluster">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pin"><i class="icon-tag"></i> Pin</label>
+        <input type="text" id="node-input-pin" placeholder="Pin">
+    </div>
+    <div class="form-row">
+        <label for="node-input-inverted"><i class="icon-tag"></i> Inverted</label>
+        <input type="text" id="node-input-inverted" placeholder="Inverted">
+    </div>
+    <div class="form-row">
+        <label for="node-input-initialValue"><i class="icon-tag"></i> Initial value</label>
+        <input type="text" id="node-input-initialValue" placeholder="Initial value">
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="cluster">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
-</script>
-
-
-
-
-<script type="text/javascript">
-    RED.nodes.registerType('set-pin',{
-        category: 'pcf8574',
-        color: '#a6bbcf',
-        defaults: {
-
-        },
-        inputs:1,
-        outputs:1,
-        icon: "file.png",
-        label: function() {
-            return this.name||"set-pin";
-        }
-    });
-</script>
-
-<script type="text/x-red" data-template-name="set-pin">
-
-</script>
-
-<script type="text/x-red" data-help-name="set-pin">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
+<script type="text/x-red" data-help-name="cluster-out">
+    <p>Cluster Output</p>
 </script>
