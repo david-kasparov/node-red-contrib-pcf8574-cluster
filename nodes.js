@@ -49,6 +49,8 @@ module.exports = (RED) => {
 
     const cluster = instances[n.cluster];
 
+    node.status({fill:"green",shape:"dot",text:"on"});
+
     cluster.outputPin(n.pin, n.inverted, n.initialValue)
     .then(() => {
       node.on('input', (msg) => {
