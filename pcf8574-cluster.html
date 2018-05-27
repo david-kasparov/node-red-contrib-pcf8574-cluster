@@ -1,26 +1,26 @@
 <script type="text/javascript">
-    RED.nodes.registerType('pcf8574-cluster',{
+    RED.nodes.registerType('cluster',{
         category: 'pcf8574',
         color: '#a6bbcf',
         defaults: {
-            name: {value:""}
+            params: {value:""}
         },
         inputs:1,
         outputs:1,
         icon: "file.png",
         label: function() {
-            return this.name||"pcf8574-cluster";
+            return this.name||"cluster";
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="pcf8574-cluster">
+<script type="text/x-red" data-template-name="cluster">
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <label for="node-input-params"><i class="icon-tag"></i> Params</label>
+        <input type="text" id="node-input-params" placeholder="Params">
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="pcf8574-cluster">
+<script type="text/x-red" data-help-name="cluster">
     <p>A simple node that converts the message payloads into all lower-case characters</p>
 </script>

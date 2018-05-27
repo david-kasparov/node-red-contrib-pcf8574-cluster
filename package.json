@@ -14,6 +14,6 @@
     }
   },
   "dependencies": {
-
+    "pcf8574cluster": "^1.0.0"
   }
 }
