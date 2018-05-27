@@ -32,8 +32,8 @@ module.exports = function(RED) {
     .then(() => {
       cluster = node.cluster;
 
-      node.warn('cluster');
-      node.warn(cluster);
+      //node.warn('cluster');
+      //node.warn(cluster);
     });
 
     node.cluster.on('input', function(msg) {
@@ -58,19 +58,17 @@ module.exports = function(RED) {
       var pin = msg.pin || 1;
       var value = msg.value || false;
 
-      cluster.outputPin(1, true, false)
-      .then(() => {
-        return cluster.outputPin(2, true, false);
-      })
-      .then(() => {
-        cluster.setPin(1, true)
-        .then(() => {
-          node.warn('set pin');
-          node.warn(cluster);
+      node.warn('set pin');
+      node.warn(msg);
+      node.warn(msg.pin);
+      node.warn(msg.value);
 
-          node.send(msg);
-        });
+      cluster.setPin(1, true)
+      .then(() => {
+
+        node.send(msg);
       });
+
     });
   }
 
