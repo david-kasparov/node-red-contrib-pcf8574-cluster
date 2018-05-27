@@ -58,12 +58,18 @@ module.exports = function(RED) {
       var pin = msg.pin || 1;
       var value = msg.value || false;
 
-      cluster.setPin(pin, value)
+      cluster.outputPin(1, true, false)
       .then(() => {
-        node.warn('set pin');
-        node.warn(cluster);
+        return cluster.outputPin(2, true, false);
+      })
+      .then(() => {
+        cluster.setPin(pin, value)
+        .then(() => {
+          node.warn('set pin');
+          node.warn(cluster);
 
-        node.send(msg);
+          node.send(msg);
+        });
       });
     });
   }
