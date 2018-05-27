@@ -41,7 +41,8 @@ module.exports = (RED) => {
       cluster.on('input', callback);
 
       node.on('close', (removed, done) => {
-        cluster.removeListener('input', callback);
+        node.warn('listeners count before close ' + cluster.listenerCount('input'));
+        //cluster.removeListener('input', callback);
       });
     });
   }
