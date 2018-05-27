@@ -22,7 +22,7 @@ module.exports = (RED) => {
           node.send(msg);
         });
 
-        this.on('close', () => {
+        node.on('close', () => {
           cluster.removeAllListeners();
           cluster.disableAllInterrupts();
         });

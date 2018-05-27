@@ -16,13 +16,16 @@ module.exports = (RED) => {
 
       const cluster = instances[n.cluster];
 
-      this.on('input', (msg) => {
+      node.on('input', (msg) => {
+        node.warn(msg);
         msg.pin_value = cluster.getPinValue(n.pin);
+
+        node.warn(cluster.getPinValue(9))
 
         node.send(msg);
       });
 
-      this.on('close', () => {
+      node.on('close', () => {
         cluster.removeAllListeners();
         cluster.disableAllInterrupts();
       });

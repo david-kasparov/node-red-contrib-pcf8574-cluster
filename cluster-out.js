@@ -18,14 +18,14 @@ module.exports = (RED) => {
 
       cluster.outputPin(n.pin, n.inverted, n.initialValue)
       .then(() => {
-        this.on('input', (msg) => {
+        node.on('input', (msg) => {
           cluster.setPin(msg.payload.pin, msg.payload.value)
           .then(() => {
 
           });
         });
 
-        this.on('close', () => {
+        node.on('close', () => {
           cluster.removeAllListeners();
           cluster.disableAllInterrupts();
         });
