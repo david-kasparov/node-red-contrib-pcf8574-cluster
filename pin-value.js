@@ -17,10 +17,7 @@ module.exports = (RED) => {
       const cluster = instances[n.cluster];
 
       node.on('input', (msg) => {
-        node.warn(msg);
-        msg.pin_value = cluster.getPinValue(n.pin);
-
-        node.warn(cluster.getPinValue(9))
+        msg.payload.pin_value = cluster.getPinValue(n.pin);
 
         node.send(msg);
       });
