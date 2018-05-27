@@ -28,7 +28,7 @@ module.exports = (RED) => {
 
       node.on('close', () => {
         //cluster.removeAllListeners();
-        //node.warn('listeners count before close ' + cluster.listenerCount('input'));
+        node.warn('listeners count before close ' + cluster.listenerCount('input'));
       });
     });
   }
