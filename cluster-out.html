@@ -5,8 +5,8 @@
         defaults: {
             cluster: {value:"", type:"cluster-configurator"},
             pin: {value: "", required: true},
-            inverted: {value: "bool", required: true, type: "bool", options:["true","false"]},
-            initialValue: { value: "", required: true, type: "bool" }
+            inverted: {value: true, required: true},
+            initialValue: { value: false, required: true }
         },
         inputs: 1,
         outputs: 0,
@@ -35,11 +35,11 @@
     </div>
     <div class="form-row">
         <label for="node-input-inverted"><i class="icon-tag"></i> Inverted</label>
-        <input type="text" id="node-input-inverted" placeholder="Inverted">
+        <input type="checkbox" id="node-input-inverted" placeholder="Inverted">
     </div>
     <div class="form-row">
         <label for="node-input-initialValue"><i class="icon-tag"></i> Initial value</label>
-        <input type="text" id="node-input-initialValue" placeholder="Initial value">
+        <input type="checkbox" id="node-input-initialValue" placeholder="Initial value">
     </div>
 </script>
 
