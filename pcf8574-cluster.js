@@ -1,9 +1,9 @@
 module.exports = function(RED) {
   "use strict";
-  const PCF8574Cluster = require('pcf8574cluster');
-  const i2cBus = require('i2c-bus');
+  //const PCF8574Cluster = require('pcf8574cluster');
+  //const i2cBus = require('i2c-bus');
 
-  let cluster;
+  //let cluster;
 
   function ClusterNode(config) {
     RED.nodes.createNode(this, config);
