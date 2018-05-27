@@ -18,7 +18,7 @@ module.exports = function(RED) {
 
     var node = this;
 
-    node.cluster = new PCF8574Cluster(i2cBus.openSync(1), config.params.addresses, config.params.initial_states);
+    /*node.cluster = new PCF8574Cluster(i2cBus.openSync(1), config.params.addresses, config.params.initial_states);
 
     let outputPins = [];
 
@@ -31,11 +31,11 @@ module.exports = function(RED) {
       cluster = node.cluster;
     });
 
-    node.on('input', function(msg) {
-      node.send(msg);
-    });
-
     node.cluster.on('input', function(msg) {
+      node.send(msg);
+    });*/
+
+    node.on('input', function(msg) {
       node.send(msg);
     });
   }
@@ -50,7 +50,9 @@ module.exports = function(RED) {
     var node = this;
 
     node.on('input', function(msg) {
-      cluster.setPin(msg.pin, msg.value);
+      var pin = msg.pin || 1;
+      var value = msg.value || false;
+      //cluster.setPin(pin, value);
     });
   }
 
