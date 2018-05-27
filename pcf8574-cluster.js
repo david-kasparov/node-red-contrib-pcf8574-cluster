@@ -3,7 +3,7 @@ module.exports = function(RED) {
   const PCF8574Cluster = require('pcf8574cluster');
   const i2cBus = require('i2c-bus').openSync(1);
 
-  //let cluster;
+  let cluster;
 
   function ClusterNode(config) {
     RED.nodes.createNode(this, config);
@@ -18,7 +18,7 @@ module.exports = function(RED) {
 
     var node = this;
 
-    /*node.cluster = new PCF8574Cluster(i2cBus, config.params.addresses, config.params.initial_states);
+    node.cluster = new PCF8574Cluster(i2cBus, config.params.addresses, config.params.initial_states);
 
     let outputPins = [];
 
@@ -33,7 +33,7 @@ module.exports = function(RED) {
 
     node.cluster.on('input', function(msg) {
       node.send(msg);
-    });*/
+    });
 
     node.on('input', function(msg) {
       node.send(msg);
@@ -52,7 +52,7 @@ module.exports = function(RED) {
     node.on('input', function(msg) {
       var pin = msg.pin || 1;
       var value = msg.value || false;
-      //cluster.setPin(pin, value);
+      cluster.setPin(pin, value);
     });
   }
 

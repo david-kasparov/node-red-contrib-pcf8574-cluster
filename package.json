@@ -14,6 +14,7 @@
     }
   },
   "dependencies": {
+    "i2c-bus": "^1.2.2",
     "pcf8574cluster": "^1.0.0"
   }
 }
