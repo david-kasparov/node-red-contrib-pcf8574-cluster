@@ -11,7 +11,8 @@
   "node-red" : {
     "nodes": {
       "configurator": "configurator.js",
-      "cluster out": "cluster-out.js"
+      "cluster out": "cluster-out.js",
+      "cluster in": "cluster-in.js"
     }
   },
   "dependencies": {
