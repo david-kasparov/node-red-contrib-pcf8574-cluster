@@ -18,6 +18,10 @@ module.exports = (RED) => {
 
       cluster.inputPin(n.pin, n.inverted)
       .then(() => {
+        cluster.on('input', (msg) => {
+          node.send(msg);
+        });
+
         this.on('close', () => {
           cluster.removeAllListeners();
           cluster.disableAllInterrupts();

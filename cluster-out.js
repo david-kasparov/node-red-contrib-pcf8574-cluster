@@ -25,13 +25,6 @@ module.exports = (RED) => {
           });
         });
 
-        cluster.on('input', (msg) => {
-          cluster.setPin(msg.payload.pin, msg.payload.value)
-          .then(() => {
-
-          });
-        });
-
         this.on('close', () => {
           cluster.removeAllListeners();
           cluster.disableAllInterrupts();
