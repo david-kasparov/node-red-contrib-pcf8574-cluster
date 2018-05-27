@@ -4,6 +4,7 @@
         color: '#3FADB5',
         defaults: {
             cluster: {value:"", type:"cluster-configurator"},
+            name: {value: "", required: false},
             pin: {value: "", required: true, validate: RED.validators.number()},
             inverted: {value: false, required: true}
         },
@@ -28,6 +29,10 @@
     <div class="form-row">
         <label for="node-input-cluster"><i class="icon-tag"></i> Cluster</label>
         <input type="text" id="node-input-cluster" placeholder="Cluster">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
         <label for="node-input-pin"><i class="icon-tag"></i> Pin</label>
