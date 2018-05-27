@@ -18,7 +18,7 @@ module.exports = function(RED) {
 
     var node = this;
 
-    node.log(config);
+    node.warn(config);
 
     node.cluster = new PCF8574Cluster(i2cBus, config.params.addresses, config.params.initial_states);
 
@@ -32,7 +32,7 @@ module.exports = function(RED) {
     .then(() => {
       cluster = node.cluster;
 
-      node.log(cluster, 'cluster');
+      node.warn(cluster, 'cluster');
     });
 
     node.cluster.on('input', function(msg) {
@@ -58,7 +58,7 @@ module.exports = function(RED) {
       var value = msg.value || false;
       cluster.setPin(pin, value);
 
-      node.log(cluster, 'set pin');
+      node.warn(cluster, 'set pin');
 
       node.send(msg);
     });
