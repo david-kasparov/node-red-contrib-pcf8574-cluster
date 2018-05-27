@@ -81,13 +81,12 @@ module.exports = function(RED) {
       node.warn('set pin');
       node.warn(cluster);
 
-      cluster.outputPin(1, true, false)
+      /*cluster.outputPin(1, true, false)
       .then(() => {
         return cluster.outputPin(2, true, false);
       })
-      .then(() => {
-        return cluster.setAllPins(true);
-      })
+      .then(() => {*/
+      cluster.setAllPins(true)
       .then(() => {
         return cluster.getPinValue(1);
       })
