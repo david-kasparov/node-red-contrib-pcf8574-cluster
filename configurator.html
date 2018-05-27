@@ -2,9 +2,9 @@
     RED.nodes.registerType('cluster-configurator', {
         category: 'config',
         defaults: {
-            addresses: {value: "", required: true, type: "string"},
-            initialStates: {value: "", required: true, type: "string"},
-            interrupts: {value: "", type: "json"}
+            addresses: {value: "{ addresses: [] }", required: true, type: "string"},
+            initialStates: {value: "{ initial_states: [] }", required: true, type: "string"},
+            interrupts: {value: "{ interrupts: [ ] }", type: "string"}
         },
         label: function () {
             return this.name || "cluster-configurator";
@@ -35,4 +35,8 @@
 
 <script type="text/x-red" data-help-name="cluster-configurator">
     <p>Configuration for cluster nodes.</p>
+    Examples:
+    Addresses json: { addresses: [ 0x20, 0x26 ] }
+    Initial states json: { initial_states: [ true, false ] }
+    Interrupts json: { interrupts: [ { index: 1, pin: 25 } ] }
 </script>

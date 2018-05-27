@@ -8,26 +8,17 @@ module.exports = (RED) => {
       RED.nodes.createNode(this, n);
 
       let node = this;
-
-      //TODO:
       let clusterConfig = RED.nodes.getNode(n.cluster);
-      clusterConfig = {
-        addresses: [0x20, 0x26],
-        initial_states: [true, true]
-      };
 
       if (!instances[n.cluster]) {
         instances[n.cluster] = Cluster(clusterConfig);
       }
 
       const cluster = instances[n.cluster];
-this.warn(n.pin)
-this.warn(n.inverted)
-this.warn(n.initialValue)
+
       cluster.outputPin(n.pin, n.inverted, n.initialValue)
       .then(() => {
         this.on('input', (msg) => {
-          node.warn(msg);
           cluster.setPin(msg.payload.pin, msg.payload.value)
           .then(() => {
 
@@ -35,7 +26,6 @@ this.warn(n.initialValue)
         });
 
         cluster.on('input', (msg) => {
-          node.warn(msg);
           cluster.setPin(msg.payload.pin, msg.payload.value)
           .then(() => {
 
