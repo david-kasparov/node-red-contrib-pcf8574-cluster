@@ -2,9 +2,9 @@
     RED.nodes.registerType('cluster-configurator', {
         category: 'config',
         defaults: {
-            addresses: {value: "", required: true},
-            initialStates: {value: "", required: true},
-            interrupts: {value: ""}
+            addresses: {value: "", required: true, type: "json"},
+            initialStates: {value: "", required: true, type: "json"},
+            interrupts: {value: "", type: "json"}
         },
         label: function () {
             return this.name || "cluster-configurator";
