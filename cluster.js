@@ -7,6 +7,7 @@ module.exports = (config) => {
 
   if (this.interrupts && this.interrupts.length) {
     this.interrupts.forEach(interrupt => {
+      console.log(interrupt)
       cluster.enableInterrupt(interrupt.index, interrupt.pin);
     });
   }
