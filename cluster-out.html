@@ -4,7 +4,7 @@
         color: '#3FADB5',
         defaults: {
             cluster: {value:"", type:"cluster-configurator"},
-            pin: {value: "", required: true},
+            pin: {value: "", required: true, validate: RED.validators.number()},
             inverted: {value: true, required: true},
             initialValue: { value: false, required: true }
         },
@@ -13,7 +13,7 @@
         paletteLabel: "cluster out",
         icon: "thermometer-icon.png",
         label: function () {
-            return this.name || "cluster-out";
+            return this.name || "cluster out";
         },
         oneditprepare: function() {
 
@@ -38,8 +38,8 @@
         <input type="checkbox" id="node-input-inverted" placeholder="Inverted">
     </div>
     <div class="form-row">
-        <label for="node-input-initialValue"><i class="icon-tag"></i> Initial value</label>
-        <input type="checkbox" id="node-input-initialValue" placeholder="Initial value">
+        <label for="node-input-initialValue"><i class="icon-tag"></i> Initiate</label>
+        <input type="checkbox" id="node-input-initialValue" placeholder="Initiate">
     </div>
 </script>
 
