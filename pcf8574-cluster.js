@@ -4,7 +4,7 @@ module.exports = (RED) => {
 
       this.cluster = RED.nodes.getNode(config.cluster);
 
-      this.warn(cluster);
+      this.warn(this.cluster);
 
       if (this.cluster) {
         this.on('input', (msg) => {
