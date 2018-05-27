@@ -21,7 +21,9 @@ module.exports = (RED) => {
       }
 
       const cluster = instances[n.cluster];
-this.warn(n.pin, n.inverted, n.initialValue)
+this.warn(n.pin)
+this.warn(n.inverted)
+this.warn(n.initialValue)
       cluster.outputPin(n.pin, n.inverted, n.initialValue)
       .then(() => {
         this.on('input', (msg) => {
