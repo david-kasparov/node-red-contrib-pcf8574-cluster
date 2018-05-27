@@ -20,7 +20,7 @@ module.exports = (RED) => {
         cluster.doPoll()
         .then(() => {
           msg.payload.pin_value = cluster.getPinValue(n.pin);
-
+          msg.payload.eee = "fff";
           node.send(msg);
         });
       });
