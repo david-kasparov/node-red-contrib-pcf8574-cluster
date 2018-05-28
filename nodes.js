@@ -3,7 +3,6 @@ const Cluster = require("./cluster");
 const instances = {};
 
 module.exports = (RED) => {
-
   function ClusterInNode(n) {
     RED.nodes.createNode(this, n);
 
@@ -25,6 +24,11 @@ module.exports = (RED) => {
       let _msg = {
         payload: msg
       };
+
+      let forOutputPins =
+        JSON.parse(n.for_output_pins).for_output_pins;
+
+      _msg.for_output_pins = forOutputPins;
 
       node.send(_msg);
     }
@@ -60,6 +64,12 @@ module.exports = (RED) => {
     });
 
     node.on('input', (msg) => {
+      if (msg.for_output_pins && msg.for_output_pins.length) {
+        if (msg.for_output_pins.indexOf(n.pin) === -1) {
+          return false;
+        }
+      }
+
       cluster.setPin(n.pin, msg.payload.value)
       .then(() => {
 
