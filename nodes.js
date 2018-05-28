@@ -59,21 +59,13 @@ module.exports = (RED) => {
 
     cluster.outputPin(n.pin, n.inverted, n.initialValue)
     .then(() => {
-      if (cluster.getPinValue(n.pin)) {
-        node.status({fill:"green",shape:"ring",text:"on"});
-      } else {
-        node.status({fill:"red",shape:"ring",text:"off"});
-      }
+
     });
 
     node.on('input', (msg) => {
       cluster.setPin(n.pin, msg.payload.value)
       .then(() => {
-        if (cluster.getPinValue(n.pin)) {
-          node.status({fill:"green",shape:"ring",text:"on"});
-        } else {
-          node.status({fill:"red",shape:"ring",text:"off"});
-        }
+
       });
     });
 
