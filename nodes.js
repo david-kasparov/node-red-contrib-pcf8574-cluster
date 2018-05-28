@@ -11,6 +11,7 @@ module.exports = (RED) => {
 
     if (!instances[n.cluster]) {
       instances[n.cluster] = Cluster(clusterConfig);
+      node.warn('new instance created');
     }
 
     const cluster = instances[n.cluster];
@@ -53,6 +54,7 @@ module.exports = (RED) => {
 
     if (!instances[n.cluster]) {
       instances[n.cluster] = Cluster(clusterConfig);
+      node.warn('new instance created');
     }
 
     const cluster = instances[n.cluster];
@@ -86,6 +88,7 @@ module.exports = (RED) => {
 
     if (!instances[n.cluster]) {
       instances[n.cluster] = Cluster(clusterConfig);
+      node.warn('new instance created');
     }
 
     const cluster = instances[n.cluster];
