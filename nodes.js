@@ -37,7 +37,7 @@ module.exports = (RED) => {
     node.on('close', () => {
       cluster.removeListener('input', onClusterInput);
 
-      //node.warn('listeners count on close ' + cluster.listenerCount('input'));
+      instances = {};
     });
   }
 
@@ -70,7 +70,7 @@ module.exports = (RED) => {
     });
 
     node.on('close', () => {
-
+      instances = {};
     });
   }
 
@@ -99,7 +99,7 @@ module.exports = (RED) => {
     });
 
     node.on('close', () => {
-
+      instances = {};
     });
   }
 
