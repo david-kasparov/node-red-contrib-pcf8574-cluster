@@ -25,10 +25,9 @@ module.exports = (RED) => {
         payload: msg
       };
 
-      let forOutputPins =
-        JSON.parse(n.for_output_pins).for_output_pins;
+      let outputPins = JSON.parse(n.output_pins).output_pins;
 
-      _msg.for_output_pins = forOutputPins;
+      _msg.output_pins = outputPins;
 
       node.send(_msg);
     }
@@ -64,8 +63,8 @@ module.exports = (RED) => {
     });
 
     node.on('input', (msg) => {
-      if (msg.for_output_pins && msg.for_output_pins.length) {
-        if (msg.for_output_pins.indexOf(n.pin) === -1) {
+      if (msg.output_pins && msg.output_pins.length) {
+        if (msg.output_pins.indexOf(n.pin) === -1) {
           return false;
         }
       }
