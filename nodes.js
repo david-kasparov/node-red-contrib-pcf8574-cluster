@@ -25,10 +25,6 @@ module.exports = (RED) => {
         payload: msg
       };
 
-      let outputPins = JSON.parse(n.outputPins).output_pins;
-
-      _msg.payload.output_pins = outputPins;
-
       node.send(_msg);
     }
 
@@ -63,12 +59,6 @@ module.exports = (RED) => {
     });
 
     node.on('input', (msg) => {
-      if (msg.output_pins && msg.output_pins.length) {
-        if (msg.output_pins.indexOf(n.pin) === -1) {
-          return false;
-        }
-      }
-
       cluster.setPin(n.pin, msg.payload.value)
       .then(() => {
 

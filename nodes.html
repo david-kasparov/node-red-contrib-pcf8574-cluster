@@ -6,8 +6,7 @@
       cluster: {value:"", type:"cluster-configurator"},
       name: {value: "", required: false},
       pin: {value: "", required: true, validate: RED.validators.number()},
-      inverted: {value: false, required: true},
-      outputPins: {value: '{ "output_pins": [ ] }', required: true, type: "string"}
+      inverted: {value: false, required: true}
     },
     inputs: 0,
     outputs: 1,
@@ -42,11 +41,6 @@
   <div class="form-row">
     <label for="node-input-inverted"><i class="icon-tag"></i> Inverted</label>
     <input type="checkbox" id="node-input-inverted" placeholder="Inverted">
-  </div>
-
-  <div class="form-row">
-    <label for="node-input-outputPins"><i class="icon-tag"></i> Output pins</label>
-    <input type="text" id="node-input-outputPins" placeholder="Output pins">
   </div>
 </script>
 
