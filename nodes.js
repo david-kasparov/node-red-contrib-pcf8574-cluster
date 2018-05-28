@@ -27,7 +27,7 @@ module.exports = (RED) => {
 
       let outputPins = JSON.parse(n.outputPins).output_pins;
 
-      _msg.output_pins = outputPins;
+      _msg.payload.output_pins = outputPins;
 
       node.send(_msg);
     }
