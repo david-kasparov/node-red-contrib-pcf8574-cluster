@@ -53,9 +53,7 @@ module.exports = (RED) => {
     }
 
     const cluster = instances[n.cluster];
-node.warn(n.pin)
-node.warn(n.inverted)
-node.warn(n.initialValue)
+
     cluster.outputPin(n.pin, n.inverted, n.initialValue)
     .then(() => {
 
