@@ -32,9 +32,9 @@ module.exports = (RED) => {
     cluster.on('input', onClusterInput);
 
     node.on('close', () => {
-      node.warn('listeners count on close ' + cluster.listenerCount('input'));
-
       cluster.removeListener('input', onClusterInput);
+
+      //node.warn('listeners count on close ' + cluster.listenerCount('input'));
     });
   }
 
@@ -53,7 +53,9 @@ module.exports = (RED) => {
     }
 
     const cluster = instances[n.cluster];
-
+node.warn(n.pin)
+node.warn(n.inverted)
+node.warn(n.initialValue)
     cluster.outputPin(n.pin, n.inverted, n.initialValue)
     .then(() => {
 
@@ -67,7 +69,7 @@ module.exports = (RED) => {
     });
 
     node.on('close', () => {
-      //node.warn('listeners count on close ' + node.listenerCount('input'));
+
     });
   }
 
