@@ -37,7 +37,7 @@ module.exports = (RED) => {
     node.on('close', () => {
       cluster.removeListener('input', onClusterInput);
 
-      instances = {};
+      delete instances[n.cluster];
     });
   }
 
@@ -70,7 +70,7 @@ module.exports = (RED) => {
     });
 
     node.on('close', () => {
-      instances = {};
+      delete instances[n.cluster];
     });
   }
 
@@ -99,7 +99,7 @@ module.exports = (RED) => {
     });
 
     node.on('close', () => {
-      instances = {};
+      delete instances[n.cluster];
     });
   }
 
