@@ -21,6 +21,10 @@ module.exports = (RED) => {
     });
 
     function onClusterInput(msg) {
+      if (msg.pin != n.pin) {
+        return false;
+      }
+
       let _msg = {
         payload: msg
       };
