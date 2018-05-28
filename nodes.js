@@ -11,7 +11,6 @@ module.exports = (RED) => {
 
     if (!instances[n.cluster]) {
       instances[n.cluster] = Cluster(clusterConfig);
-      node.warn('new instance created');
     }
 
     const cluster = instances[n.cluster];
@@ -54,20 +53,27 @@ module.exports = (RED) => {
 
     if (!instances[n.cluster]) {
       instances[n.cluster] = Cluster(clusterConfig);
-      node.warn('new instance created');
     }
 
     const cluster = instances[n.cluster];
 
     cluster.outputPin(n.pin, n.inverted, n.initialValue)
     .then(() => {
-
+      if (cluster.getPinValue(n.pin)) {
+        node.status({fill:"green",shape:"ring",text:"on"});
+      } else {
+        node.status({fill:"red",shape:"ring",text:"off"});
+      }
     });
 
     node.on('input', (msg) => {
       cluster.setPin(n.pin, msg.payload.value)
       .then(() => {
-
+        if (cluster.getPinValue(n.pin)) {
+          node.status({fill:"green",shape:"ring",text:"on"});
+        } else {
+          node.status({fill:"red",shape:"ring",text:"off"});
+        }
       });
     });
 
@@ -88,7 +94,6 @@ module.exports = (RED) => {
 
     if (!instances[n.cluster]) {
       instances[n.cluster] = Cluster(clusterConfig);
-      node.warn('new instance created');
     }
 
     const cluster = instances[n.cluster];
