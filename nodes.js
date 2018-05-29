@@ -98,6 +98,7 @@ module.exports = (RED) => {
     node.on('input', (msg) => {
       let pinValue = cluster.getPinValue(n.pin);
 
+      msg.payload.pin_number = n.pin;
       msg.payload.pin_value = pinValue;
 
       node.send(msg);
