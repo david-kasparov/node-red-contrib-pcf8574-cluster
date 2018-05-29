@@ -69,8 +69,13 @@ module.exports = (RED) => {
       });
     });
 
-    node.on('close', () => {
-      delete instances[n.cluster];
+    node.on('close', (done) => {
+      cluster.setAllPins(false)
+      .then(() => {
+        delete instances[n.cluster];
+
+        done();
+      });
     });
   }
 
