@@ -96,10 +96,6 @@ module.exports = (RED) => {
     const cluster = instances[n.cluster];
 
     node.on('input', (msg) => {
-      if (!msg.hasOwnProperty('payload')) {
-        msg = {};
-      }
-
       let pinValue = cluster.getPinValue(n.pin);
 
       msg.payload.pin_number = parseInt(n.pin);
