@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-pcf8574-cluster",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "i2c-bus": "^1.2.2",
-    "pcf8574cluster": "^0.0.1"
+    "pcf8574cluster": "^0.0.4"
   }
 }
