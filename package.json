@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-pcf8574-cluster",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,6 +14,9 @@
       "nodes": "nodes.js"
     }
   },
+  "keywords": [
+    "node-red", "pcf8574-cluster"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/david-kasparov/node-red-contrib-pcf8574-cluster.git"
