@@ -63,7 +63,7 @@ module.exports = (RED) => {
     });
 
     node.on('input', (msg) => {
-      cluster.setPin(n.pin, msg.payload.value)
+      cluster.setPin(n.pin, msg.payload)
       .then(() => {
 
       });
